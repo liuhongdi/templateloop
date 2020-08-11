@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<div style="width:100%;height:30px;background:#ffffff;font-size: 16px;" ></div>
+<div id="content" style="width:1040px;">
+    <div style="width:790px;float:left;margin-left:30px;">
+        <!--main begin-->
+
+        <div th:each="categoryOne:${list}" style="width:790px;font-size:16px;overflow: hidden;">
+            <!--显示分类信息-->
+            <div style="background:#eeeeee;width:790px;height:20px;line-height:20px;overflow: hidden;margin-top: 10px;">
+                <div style="width:200px;float:left;">
+                分类ID:<span th:text="${categoryOne.category.categoryId}"></span> 分类名称:<span th:text="${categoryOne.category.categoryName}"></span>
+                </div>
+
+                <div style="width:200px;float:right;text-align: right;">
+                    <a th:href="@{/goods/goodslist/(categoryid=${categoryOne.category.categoryId})}">更多...</a>
+                </div>
+            </div>
+            <!--显示分类下的商品列表信息-->
+            <div style="width:790px;height:100px;">
+                <div th:each="goodsOne:${categoryOne.goodslist}" style="width:250px;height:100px;float: left;background:#eeeeee;margin-left:10px;margin-top:10px;">
+                    <div>商品ID:<span th:text="${goodsOne.goodsId}"></span></div>
+                    <div>商品名称:<span th:text="${goodsOne.goodsName}"></span></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--main   end-->
+    </div>
+</div>
+
+</body>
+</html>
